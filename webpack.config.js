@@ -4,7 +4,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.[contenthash].js',
   },
   resolve: {
@@ -37,4 +37,12 @@ module.exports = {
       template: './public/index.html',
     }),
   ],
+  devServer: {
+    contentBase: path.join(__dirname, 'build'),
+    compress: true,
+    port: 3000,
+    open: true,
+    hot: true,
+  },
+  devtool: 'source-map'
 };
